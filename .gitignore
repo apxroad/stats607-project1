@@ -1,0 +1,17 @@
+# Ignore baseline junk
+baseline/
+
+# Python/OS artifacts
+.venv/
+__pycache__/
+*.py[cod]
+.DS_Store
+
+# Build/dist
+*.egg-info/
+dist/
+build/
+
+# Generated results
+artifacts/
+
