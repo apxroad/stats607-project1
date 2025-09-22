@@ -18,3 +18,5 @@ artifacts/
 *.log
 artifacts/*.csv
 baseline/
+# local-only files
+baseline/
