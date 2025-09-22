@@ -1,17 +1,19 @@
-# Ignore baseline junk
-baseline/
-
-# Python/OS artifacts
-.venv/
+# Python + project-specific ignores
 __pycache__/
 *.py[cod]
-.DS_Store
-
-# Build/dist
+*.class
 *.egg-info/
-dist/
+*.egg
 build/
-
-# Generated results
-# artifacts/
-
+dist/
+.venv/
+env/
+venv/
+artifacts/
+*.png
+*.csv
+.ipynb_checkpoints/
+.vscode/
+*.swp
+.DS_Store
+*.log
