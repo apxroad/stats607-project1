@@ -1,3 +1,20 @@
 [build-system]
 requires = ["setuptools>=61", "wheel"]
 build-backend = "setuptools.build_meta"
+
+[project]
+name = "segmentation"
+version = "0.0.1"
+description = "Reproducible KMeans clustering pipeline"
+authors = [{ name = "Thanh Nguyen" }]
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "pandas",
+    "numpy",
+    "scikit-learn",
+    "matplotlib",
+]
+
+[project.scripts]
+segmentation = "segmentation.run_pipeline:main"
