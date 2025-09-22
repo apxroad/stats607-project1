@@ -32,3 +32,10 @@ source .venv/bin/activate     # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
 pip install -e .
 > Tip: use `python -m pytest -q` to force the venv interpreter.
+
+### Expected outputs
+Running the command writes to `artifacts/`:
+- `elbow.png`, `silhouette.png`, `pca_scatter.png`
+- `scores.csv` (inertia & average silhouette by k)
+- `metadata.json` (parameters, timestamp, git commit)
+
