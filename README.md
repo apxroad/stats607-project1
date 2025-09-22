@@ -31,3 +31,4 @@ source .venv/bin/activate     # Windows: .venv\Scripts\activate
 
 pip install -r requirements.txt
 pip install -e .
+> Tip: use `python -m pytest -q` to force the venv interpreter.
