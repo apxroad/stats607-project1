@@ -11,9 +11,9 @@ env/
 venv/
 artifacts/
 *.png
-*.csv
 .ipynb_checkpoints/
 .vscode/
 *.swp
 .DS_Store
 *.log
+artifacts/*.csv
