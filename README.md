@@ -99,33 +99,42 @@ Covers:
 
 ---
 
-## Project structure
+## Project structure 
 
-~~~text
+```text
 .
-├── Assignment_2_Kmeans/
-│   └── 210266_assignment2_notebook.ipynb
-├── data/
-│   └── credit-card-holder-data.csv
-├── src/segmentation/
-│   ├── __init__.py
-│   ├── io.py
-│   ├── preprocess.py
-│   ├── model.py
-│   ├── plots.py
-│   └── run_pipeline.py
-├── tests/
-│   ├── test_e2e_pipeline.py
-│   ├── test_io.py
-│   ├── test_model.py
-│   ├── test_plots.py
-│   └── test_preprocess.py
-├── run_analysis.py
-├── artifacts/              # generated at runtime (git-ignored)
-├── requirements.txt
-├── pyproject.toml
-└── README.md
-~~~
+├── Assignment_2_Kmeans/                  # Original notebook folder (reference only)
+│   └── 210266_assignment2_notebook.ipynb # The raw notebook this project refactors
+├── data/                                 # Input data used by the pipeline
+│   └── credit-card-holder-data.csv       # Customer features for clustering
+├── src/                                  # Installable Python package source
+│   └── segmentation/                     # Package name: `segmentation`
+│       ├── __init__.py                   # Package marker / exports (keeps namespace clean)
+│       ├── io.py                         # load_csv(): read CSV with simple validation
+│       ├── preprocess.py                 # standardize(): scale numeric columns (StandardScaler)
+│       ├── model.py                      # fit_kmeans(), sweep_k(): core KMeans logic + metrics
+│       ├── plots.py                      # save_elbow(), save_silhouette(), save_pca_scatter()
+│       └── run_pipeline.py               # Orchestrates the full run; CLI args → load → prep → model → plots
+├── run_analysis.py                       # One-command wrapper (assignment-friendly entry point)
+├── tests/                                # Pytest test suite (unit + end-to-end)
+│   ├── test_io.py                        # Validates CSV loading behavior
+│   ├── test_preprocess.py                # Checks scaling output and shapes
+│   ├── test_model.py                     # Checks labels length, inertia>0, silhouette range, monotonicity
+│   ├── test_plots.py                     # Ensures plot files are created
+│   └── test_e2e_pipeline.py              # Runs the whole pipeline on the CSV end-to-end
+├── artifacts/                            # Runtime outputs (git-ignored)
+│   ├── elbow.png                         # Inertia vs k
+│   ├── silhouette.png                    # Average silhouette vs k
+│   ├── pca_scatter.png                   # 2D PCA of samples colored by cluster
+│   ├── scores.csv                        # Inertia & silhouette for each k in the sweep
+│   └── metadata.json                     # Parameters, timestamp, git commit
+├── requirements.txt                      # Minimal dependencies to reproduce
+├── pyproject.toml                        # Package metadata + console_script entrypoint
+├── README.md                             # Install / run / test instructions (this file)
+├── .gitignore                            # Ignore rules (e.g., venv/, artifacts/, baseline/, Kmeans/)
+└── Unit 1 Project - Frictionless Reproducibility (due by 11pm on 9-23).pdf
+                                         # The assignment brief
+
 
 ---
 
