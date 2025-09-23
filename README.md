@@ -1,41 +1,42 @@
 # Project 1 — Reproducible KMeans Segmentation
 
 This project refactors the original notebook (`Assignment_2_Kmeans/210266_assignment2_notebook.ipynb`)
-into a clean, **installable**, **tested**, and **one-command** pipeline that reproduces results
-(figures + tables + metadata).
+into a clear, **installable**, **tested**, and **one-command** pipeline that reproduces the same results
+(figures, a metrics table, and simple metadata).
 
-**Key idea:** frictionless reproducibility — clone, install, run one command, get the results.
-
----
-
-## 📦 What’s in this repo
-
-- `Assignment_2_Kmeans/` — the original notebook (reference only)
-- `src/segmentation/` — library code (I/O, preprocessing, modeling, plotting, CLI)
-- `tests/` — automated tests (pytest)
-- `data/` — local data (e.g., `credit-card-holder-data.csv`)
-- `artifacts/` — outputs (plots, tables, metadata) **not tracked in git**
-- `requirements.txt` — minimal dependencies
-- `pyproject.toml` — packaging & CLI entrypoint
-- `README.md` — this document
-- `Unit 1 Project - Frictionless Reproducibility (due by 11pm on 9-23).pdf` — assignment
+**Goal:** frictionless reproducibility — clone, install, run one command, get the same outputs.
 
 ---
 
-## ⚙️ Environment & Installation
+## What’s in this repo
+
+- `Assignment_2_Kmeans/` — original notebook (reference only)
+- `data/` — input data (e.g., `credit-card-holder-data.csv`) **included**
+- `src/segmentation/` — library code
+  - `io.py` (load CSV)
+  - `preprocess.py` (scale numeric columns)
+  - `model.py` (KMeans + sweep over k)
+  - `plots.py` (elbow, silhouette, PCA scatter)
+  - `run_pipeline.py` (main pipeline)
+- `run_analysis.py` — one-command wrapper required by the assignment
+- `tests/` — pytest tests (unit + end-to-end)
+- `artifacts/` — outputs (images, CSV, metadata) **ignored by git**
+- `requirements.txt` — dependencies
+- `pyproject.toml` — packaging and console script
+- `README.md` — this file
+- `Unit 1 Project - Frictionless Reproducibility (due by 11pm on 9-23).pdf` — assignment brief
+
+---
+
+## Environment & install
+
+> Python 3.10+ recommended.
 
 ```bash
 # from project root
-python -m venv .venv
-source .venv/bin/activate     # Windows: .venv\Scripts\activate
+python3 -m venv .venv
+source .venv/bin/activate        # Windows: .venv\Scripts\activate
 
+python -m pip install --upgrade pip
 pip install -r requirements.txt
 pip install -e .
-> Tip: use `python -m pytest -q` to force the venv interpreter.
-
-### Expected outputs
-Running the command writes to `artifacts/`:
-- `elbow.png`, `silhouette.png`, `pca_scatter.png`
-- `scores.csv` (inertia & average silhouette by k)
-- `metadata.json` (parameters, timestamp, git commit)
-
