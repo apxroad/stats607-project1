@@ -34,7 +34,7 @@ into a clear, **installable**, **tested**, and **one-command** pipeline that rep
 
 > Python 3.10+ recommended.
 
-~~~bash
+```bash
 # from project root
 python3 -m venv .venv
 source .venv/bin/activate        # Windows: .venv\Scripts\activate
@@ -42,7 +42,7 @@ source .venv/bin/activate        # Windows: .venv\Scripts\activate
 python -m pip install --upgrade pip
 pip install -r requirements.txt
 pip install -e .
-~~~
+```
 
 ---
 
@@ -50,27 +50,27 @@ pip install -e .
 
 Choose either of these:
 
-### Option A: `run_analysis.py`
+### Option A (matches assignment): `run_analysis.py`
 
-~~~bash
+```bash
 python run_analysis.py
-~~~
+```
 
-### Option B:
+### Option B (console script)
 
-~~~bash
+```bash
 segmentation \
   --data data/credit-card-holder-data.csv \
   --k-min 2 --k-max 10 --k 6 \
   --random-state 42 \
   --out artifacts
-~~~
+```
 
 *(Windows PowerShell)*
 
-~~~powershell
+```powershell
 segmentation --data data\credit-card-holder-data.csv --k-min 2 --k-max 10 --k 6 --random-state 42 --out artifacts
-~~~
+```
 
 ### Expected outputs (written to `artifacts/`)
 
@@ -86,9 +86,9 @@ segmentation --data data\credit-card-holder-data.csv --k-min 2 --k-max 10 --k 6 
 
 Run tests inside the virtual environment:
 
-~~~bash
+```bash
 python -m pytest -q
-~~~
+```
 
 Covers:
 - CSV loading (`io.py`)
@@ -99,7 +99,7 @@ Covers:
 
 ---
 
-## Project structure 
+## Project structure (with file-by-file comments)
 
 ```text
 .
@@ -114,7 +114,7 @@ Covers:
 │       ├── preprocess.py                 # standardize(): scale numeric columns (StandardScaler)
 │       ├── model.py                      # fit_kmeans(), sweep_k(): core KMeans logic + metrics
 │       ├── plots.py                      # save_elbow(), save_silhouette(), save_pca_scatter()
-│       └── run_pipeline.py               # Orchestrates the full run; CLI args → load → prep → model → plots
+│       └── run_pipeline.py               # Orchestrates full run; CLI args → load → prep → model → plots
 ├── run_analysis.py                       # One-command wrapper (assignment-friendly entry point)
 ├── tests/                                # Pytest test suite (unit + end-to-end)
 │   ├── test_io.py                        # Validates CSV loading behavior
@@ -134,7 +134,7 @@ Covers:
 ├── .gitignore                            # Ignore rules (e.g., venv/, artifacts/, baseline/, Kmeans/)
 └── Unit 1 Project - Frictionless Reproducibility (due by 11pm on 9-23).pdf
                                          # The assignment brief
-
+```
 
 ---
 
@@ -145,11 +145,10 @@ Covers:
 - **Tests say `No module named numpy/pandas`** → you’re using system Python; run `python -m pytest -q` after activating the venv.  
 - **`CSV not found`** → check the `--data` path; the repo includes `data/credit-card-holder-data.csv`.  
 - **Editable install errors about `*.egg-info`** → clean build artefacts, then reinstall:
-  ~~~bash
+
+  ```bash
   rm -rf build/ dist/ *.egg-info
   find . -name "*.egg-info" -type d -exec rm -rf {} +
   pip install -e .
-  ~~~
-
----
+  ```
 
