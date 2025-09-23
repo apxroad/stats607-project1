@@ -11,7 +11,7 @@ into a clear, **installable**, **tested**, and **one-command** pipeline that rep
 ## What’s in this repo
 
 - `Assignment_2_Kmeans/` — original notebook (reference only)
-- `data/` — input data (e.g., `credit-card-holder-data.csv`) **included**
+- `data/` — input data (e.g., `credit-card-holder-data.csv`) 
 - `src/segmentation/` — library code  
   - `io.py` — load CSV with simple validation  
   - `preprocess.py` — scale numeric columns (StandardScaler)  
@@ -50,13 +50,13 @@ pip install -e .
 
 Choose either of these:
 
-### Option A (matches assignment): `run_analysis.py`
+### Option A: `run_analysis.py`
 
 ```bash
 python run_analysis.py
 ```
 
-### Option B (console script)
+### Option B:
 
 ```bash
 segmentation \
@@ -99,7 +99,7 @@ Covers:
 
 ---
 
-## Project structure (with file-by-file comments)
+## Project structure
 
 ```text
 .
